@@ -7,7 +7,7 @@ import Repo from '../pages/Repo';
 const Routes: React.FC = () => (
   <Switch>
     <Route path="/" exact component={List} />
-    <Route path="/repository" component={Repo} />
+    <Route path="/repository/:repository+" component={Repo} />
   </Switch>
 );
 export default Routes;
