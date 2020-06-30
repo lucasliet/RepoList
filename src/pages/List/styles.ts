@@ -45,6 +45,7 @@ export const Form = styled.form`
 
 export const RepoList = styled.div`
   display: flex;
+  flex-direction: column;
   margin-top: 80px;
   max-width: 700px;
 
@@ -77,6 +78,7 @@ export const RepoList = styled.div`
 
     div {
       display: flex;
+      flex: 1;
       flex-direction: column;
 
       margin-left: 16px;
