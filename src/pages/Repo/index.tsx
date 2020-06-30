@@ -7,6 +7,7 @@ import api from '../../services/api';
 import { RepoInfo, Header, Issues } from './styles';
 
 import logo from '../../assets/logo.svg';
+import rootpath from '../../config/GetRoothPath';
 
 interface RepositoryParams {
   repository: string;
@@ -49,7 +50,7 @@ const Repo: React.FC = () => {
     <>
       <Header>
         <img src={logo} alt="Github Explorer" />
-        <Link to="/">
+        <Link to={rootpath}>
           <FiChevronLeft />
           Voltar
         </Link>

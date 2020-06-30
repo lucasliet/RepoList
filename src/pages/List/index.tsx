@@ -7,6 +7,7 @@ import api from '../../services/api';
 import { Title, Form, RepoList, Error } from './styles';
 
 import logo from '../../assets/logo.svg';
+import rootpath from '../../config/GetRoothPath';
 
 interface Repository {
   full_name: string;
@@ -73,7 +74,7 @@ const List: React.FC = () => {
         {repositories.map(repository => (
           <Link
             key={repository.full_name}
-            to={`/repository/${repository.full_name}`}
+            to={`${rootpath}repository/${repository.full_name}`}
           >
             <img
               src={repository.owner.avatar_url}

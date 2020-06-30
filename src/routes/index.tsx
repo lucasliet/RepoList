@@ -4,10 +4,12 @@ import { Switch, Route } from 'react-router-dom';
 import List from '../pages/List';
 import Repo from '../pages/Repo';
 
+import rootpath from '../config/GetRoothPath';
+
 const Routes: React.FC = () => (
   <Switch>
-    <Route path="/" exact component={List} />
-    <Route path="/repository/:repository+" component={Repo} />
+    <Route path={rootpath} exact component={List} />
+    <Route path={`${rootpath}repository/:repository+`} component={Repo} />
   </Switch>
 );
 export default Routes;
