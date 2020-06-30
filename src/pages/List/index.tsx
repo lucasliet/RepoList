@@ -1,4 +1,4 @@
-import React, { useState, FormEvent } from 'react';
+import React, { useState, useEffect, FormEvent } from 'react';
 import { Link } from 'react-router-dom';
 import { FiChevronRight } from 'react-icons/fi';
 
@@ -20,7 +20,20 @@ interface Repository {
 const List: React.FC = () => {
   const [inputRepo, setInputRepo] = useState('');
   const [inputError, setInputError] = useState('');
-  const [repositories, setRepositories] = useState<Repository[]>([]);
+  const [repositories, setRepositories] = useState<Repository[]>(() => {
+    const storagedRepositories = localStorage.getItem('@RepoList:repositories');
+    if (storagedRepositories) {
+      return JSON.parse(storagedRepositories);
+    }
+    return [];
+  });
+
+  useEffect(() => {
+    localStorage.setItem(
+      '@RepoList:repositories',
+      JSON.stringify(repositories),
+    );
+  }, [repositories]);
 
   async function addRepository(
     event: FormEvent<HTMLFormElement>,
@@ -67,7 +80,7 @@ const List: React.FC = () => {
               <strong>{repository.full_name}</strong>
               <p>{repository.description}</p>
             </div>
-            <FiChevronRight />
+            <FiChevronRight size={20} />
           </Link>
         ))}
       </RepoList>
